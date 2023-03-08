@@ -15,8 +15,8 @@ namespace Logic_Gates
             inputs[2] = new int[2] { 1, 0 };
             inputs[3] = new int[2] { 1, 1 };
 
-            /*
-             * Takes user input of x
+            /* METHOD 1
+            //Takes user input of x
             Console.WriteLine("Input X |X1|X2 - Separated by comma - {1,0}");
             for (int i = 0; i < 4; i++)
             {
@@ -31,7 +31,8 @@ namespace Logic_Gates
                     inputs[i][j] = int.Parse(input[j]);
             }*/
 
-            // Takes user input of y
+            /* METHOD 2
+            //Takes user input of y
             Console.WriteLine("\n-------------------------------\n");
             Console.WriteLine("Input Y | (Expected Output)");
             for (int i = 0; i < 4; i++)
@@ -40,21 +41,53 @@ namespace Logic_Gates
 
                 outputs[i] = int.Parse(Console.ReadLine());
             }
+            */
+
+            // METHOD 3
+            Console.WriteLine("1 - [OR]");
+            Console.WriteLine("2 - [AND]");
+            Console.WriteLine("3 - [NOR]");
+            Console.WriteLine("4 - [NAND]");
+            Console.WriteLine("5 - [XOR]");
+            Console.WriteLine("6 - [XNOR]");
+            Console.Write("Enter : ");
+
+            switch(Console.ReadLine())
+            {
+                case "1":
+                    outputs = new int[] { 0, 1, 1, 1};
+                    break;
+                case "2":
+                    outputs = new int[] { 0, 0, 0, 1 };
+                    break;
+                case "3":
+                    outputs = new int[] { 1, 0, 0, 0 };
+                    break;
+                case "4":
+                    outputs = new int[] { 1, 1, 1, 0 };
+                    break;
+                case "5":
+                    outputs = new int[] { 0, 1, 1, 0 };
+                    break;
+                case "6":
+                    outputs = new int[] { 1, 0, 0, 1 };
+                    break;
+            }
 
             Console.WriteLine("\n-------------------------------\n");
 
             // Train the perceptron
             Perceptron p = new Perceptron();
-            p.Train(inputs, outputs, 50);
+            p.Train(inputs, outputs, 10);
 
             // Loops and test perceptrons
             Console.WriteLine("\n-------------------------------");
             Console.WriteLine("\n X1 | X2 | Expected | Results");
             for (int i = 0; i < 4; i++)
                 Console.WriteLine("  {0} |  {1} |    {2}     |  {3}", inputs[i][0]
-                                                                   , inputs[i][1]
-                                                                   , outputs[i]
-                                                                   ,p.CalculateOutput(inputs[i]));
+                                                                    , inputs[i][1]
+                                                                    , outputs[i]
+                                                                    ,p.CalculateOutput(inputs[i]));
 
             Console.ReadLine();
         }

@@ -28,12 +28,6 @@ namespace Logic_Gates
             this.learningRate = learningRate;
         }
 
-        // Activation function using step rule
-        public int Activation(double sum)
-        {
-            return (sum >= 0) ? 1 : 0;
-        }
-
         public int CalculateOutput(int[] x)
         {
             double weightedSum = 0;
@@ -43,8 +37,8 @@ namespace Logic_Gates
                 weightedSum += x[i] * weights[i];
             weightedSum += bias;
 
-            return Activation(weightedSum);
-        }
+            return (weightedSum >= 0) ? 1 : 0;
+        }   
 
         public void Train(int[][] inputs, int[] outputs, int epochLimit)
         {
