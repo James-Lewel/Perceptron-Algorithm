@@ -54,7 +54,7 @@ namespace Logic_Gates
                 Console.WriteLine("  {0} |  {1} |    {2}     |  {3}", inputs[i][0]
                                                                    , inputs[i][1]
                                                                    , outputs[i]
-                                                                   ,p.Predict(inputs[i]));
+                                                                   ,p.CalculateOutput(inputs[i]));
 
             Console.ReadLine();
         }

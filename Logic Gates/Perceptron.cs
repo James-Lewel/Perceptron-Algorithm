@@ -34,7 +34,7 @@ namespace Logic_Gates
             return (sum >= 0) ? 1 : 0;
         }
 
-        public int Predict(int[] x)
+        public int CalculateOutput(int[] x)
         {
             double weightedSum = 0;
 
@@ -63,10 +63,9 @@ namespace Logic_Gates
                     for (int j = 0; j < 2; j++)
                         x[j] = inputs[i][j];
 
-                    // Sets predictions and errors
-                    int output = outputs[i];
-                    int prediction = Predict(x);
-                    int error = output - prediction;
+                    // Calculates output and errors
+                    int output = CalculateOutput(x);
+                    int error = outputs[i] - output;
                     totalError += Math.Abs(error);
 
                     // Set new weights and bias
